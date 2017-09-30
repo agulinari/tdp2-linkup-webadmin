@@ -10,7 +10,7 @@
 angular.module('sbAdminApp')
   .directive('sidebar', function() {
     return {
-      templateUrl:'views/sidebar/sidebar.html',
+      templateUrl:'sidebar/sidebar.html',
       restrict: 'E',
       replace: true,
       scope: {

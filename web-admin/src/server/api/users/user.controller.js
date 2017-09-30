@@ -26,7 +26,19 @@ exports.login = function(req, res) {
     return res.json(user);
   });
 };
+// Creates a new user in the DB.
+exports.create = function(req, res) {
 
+  var newuser = {};
+  newuser.username = req.body.username;
+  newuser.password = req.body.password;
+ 
+  User.create(newuser, function(err, user) {
+    if(err) { return handleError(res, err); }    
+    return res.status(201).json(user);
+  });
+
+};
 // Updates an existing user in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }

@@ -9,7 +9,7 @@
 angular.module('sbAdminApp')
 	.directive('header',function(){
 		return {
-        templateUrl:'views/header/header.html',
+        templateUrl:'header/header.html',
         restrict: 'E',
         replace: true,
     	}
