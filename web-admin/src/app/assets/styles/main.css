@@ -3,6 +3,31 @@ body {
     padding-bottom: 20px;
 }
 
+/* Login page */
+.float-my-children > * {
+    float:left;
+    margin-right:5px;
+    vertical-align: middle;
+}
+
+.clearfix {
+    *zoom:1; /* for IE */
+    margin-top: 100px;
+}
+
+/* Fin login page */
+
+/*
+ *GRILLA
+ */
+
+/*style.css*/
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 400px;
+    height: 300px
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

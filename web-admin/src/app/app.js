@@ -137,6 +137,28 @@ angular
           }
         }
       })
+       .state('dashboard.abuse',{
+        url:'/abuse',
+        controller: 'AbuseController',
+        templateUrl:'abuse/abuse.view.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+                'abuse/abuse.controller.js',
+                'app-services/flash.service.js',
+                'app-services/abuse.service.js'
+              /*'scripts/controllers/main.js',
+              'scripts/directives/timeline/timeline.js',
+              'scripts/directives/notifications/notifications.js',
+              'scripts/directives/chat/chat.js',
+              'scripts/directives/dashboard/stats/stats.js'*/
+              ]
+            })
+          }
+        }
+      })
       
   }]);
 

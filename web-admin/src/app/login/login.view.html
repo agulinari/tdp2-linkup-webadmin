@@ -1,7 +1,12 @@
 ﻿<div class="col-md-6 col-md-offset-3">
 <div ng-controller="LoginController as vm">
-    <img ng-src="assets/images/logo2.png" alt='logo image' class="img-responsive center-block" />
-    <h2>Login</h2>
+
+    <div class="clearfix float-my-children">
+        <img ng-src="assets/images/logo_linkup.png" width="30%" alt='logo image' class="img-responsive center-block" />
+        <div><img ng-src="assets/images/logo_linkup_text.png" alt='logo image' class="img-responsive center-block" /></div>
+    </div>
+
+    <h2>Webadmin-Login</h2>
     <form name="form" ng-submit="vm.login()" role="form">
         
         <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">

@@ -19,7 +19,7 @@ angular.module('sbAdminApp')
         $scope.selectedMenu = 'dashboard';
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;
-        $scope.idemployee = $cookieStore.get('globals').currentUser.idemployee;
+        //$scope.idemployee = $cookieStore.get('globals').currentUser.idemployee;
         
         $scope.check = function(x){
           
@@ -38,9 +38,9 @@ angular.module('sbAdminApp')
         };
 
         $scope.show = function(role){
-          if (role === $scope.idemployee){
+         /** if (role === $scope.idemployee){
             return true;
-          }
+          }**/
           return false;
         };
       }]
