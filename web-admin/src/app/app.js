@@ -13,6 +13,7 @@ angular
     'ui.router',
     'ui.bootstrap',
     'ngAnimate',
+    'smart-table',
     'angular-loading-bar',
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {

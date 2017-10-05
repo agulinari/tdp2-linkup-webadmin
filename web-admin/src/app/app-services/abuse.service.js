@@ -13,7 +13,7 @@
         return service;
 
         function GetAll() {
-            return $http.get('localhost:3000/AbuseReport').then(handleSuccess, handleError('Error getting all abuse'));
+            return $http.get('/api/abuses').then(handleSuccess, handleError('Error getting all abuse'));
         }
 
         // private functions
