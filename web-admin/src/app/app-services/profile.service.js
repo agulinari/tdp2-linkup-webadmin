@@ -11,6 +11,7 @@
 
         service.GetAll = GetAll;
         service.GetById = GetById;
+        service.GetImage = GetImage;
 
         return service;
 
@@ -20,6 +21,10 @@
 
         function GetById(id) {
             return $http.get('/api/profiles/' + id).then(handleSuccess, handleError('Error getting profile by id'));
+        }
+
+        function GetImage(id, index){
+            return $http.get('/api/profiles/image/' + id + '/' + index).then(handleSuccess, handleError('Error getting image profile by id'));
         }
 
         // private functions

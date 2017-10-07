@@ -7,13 +7,13 @@ exports.index = function(req, res) {
             {reporter: 'Laurent', reported: 'Renard', date: new Date('1987-05-21'), reason: 'Fotos inapropiadas', comments: 'es menor de edad'},
             {reporter: 'Blandine', reported: 'Faivre', date: new Date('1987-04-25'), reason: 'Lenguaje abusivo', comments: 'Insultos'},
             {reporter: 'Francoise', reported: 'Frere', date: new Date('1955-08-27'), reason: 'Spam', comments: 'es un bot'},
-            {reporter: 'Laurent', reported: 'Renard', date: new Date('1987-05-21'), reason: 'Fotos inapropiadas', comments: 'Pornografia'},
+            {reporter: 'Laurent', reported: 'Renard', date: new Date('1987-05-21'), reason: 'Fotos inapropiadas', comments: 'mal gusto'},
             {reporter: 'Blandine', reported: 'Faivre', date: new Date('1987-04-25'), reason: 'Lenguaje abusivo', comments: ''},
             {reporter: 'Francoise', reported: 'Frere', date: new Date('1955-08-27'), reason: 'Spam', comments: 'me envio un link con un virus'},
             {reporter: 'Laurent', reported: 'Renard', date: new Date('1987-05-21'), reason: 'Fotos inapropiadas', comments: 'publico fotos pornograficas'},
             {reporter: 'Blandine', reported: 'Faivre', date: new Date('1987-04-25'), reason: 'Lenguaje abusivo', comments: 'maltrato verbal'},
             {reporter: 'Francoise', reported: 'Frere', date: new Date('1955-08-27'), reason: 'Spam', comments: 'me manda links indeseados'},
-            {reporter: 'Laurent', reported: 'Renard', date: new Date('1987-05-21'), reason: 'Fotos inapropiadas', comments: 'Pornografia'},
+            {reporter: 'Laurent', reported: 'Renard', date: new Date('1987-05-21'), reason: 'Fotos inapropiadas', comments: 'desnudo'},
             {reporter: 'Blandine', reported: 'Faivre', date: new Date('1987-04-25'), reason: 'Lenguaje abusivo', comments: 'me insulto en el chat'},
             {reporter: 'Francoise', reported: 'Frere', date: new Date('1955-08-27'), reason: 'Spam', comments: 'me envia publicidad constantemente'}
         ]};

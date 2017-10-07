@@ -6,7 +6,7 @@ exports.index = function(req, result) {
  
   request('https://linkuptdp.herokuapp.com/user', { json: true }, (err, res, body) => {
     if (err) { 
-      return handleError(res, err);
+      return handleError(result, err);
     }
     else {
       return result.status(200).json(body);
@@ -15,10 +15,28 @@ exports.index = function(req, result) {
   
   
 };
-// Get a single user
-exports.show = function(req, res) {
-  var user = {}
-  return res.status(200).json(user);
+// Get a single profile
+exports.show = function(req, result) {
+    request('https://linkuptdp.herokuapp.com/user/'+req.params.id, { json: true }, (err, res, body) => {
+    if (err) { 
+      return handleError(result, err);
+    }
+    else {
+      return result.status(200).json(body);
+    }
+  });
+ 
+};
+// Get a single profile image
+exports.image = function(req, result) {
+    request('https://linkuptdp.herokuapp.com/image/'+req.params.id+'/'+req.params.index, { json: true }, (err, res, body) => {
+    if (err) { 
+      return handleError(result, err);
+    }
+    else {
+      return result.status(200).json(body);
+    }
+  });
  
 };
 

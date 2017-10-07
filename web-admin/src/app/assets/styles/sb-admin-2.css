@@ -556,9 +556,8 @@ table.dataTable thead .sorting:after {
 }
 
 .card.hovercard .cardheader {
-    background: url("http://lorempixel.com/850/280/nature/4/");
     background-size: cover;
-    height: 135px;
+    height: 300px;
 }
 
 .card.hovercard .avatar {
@@ -592,7 +591,7 @@ table.dataTable thead .sorting:after {
 
 .card.hovercard .info .desc {
     overflow: hidden;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 20px;
     color: #737373;
     text-overflow: ellipsis;

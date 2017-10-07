@@ -10,7 +10,6 @@
         vm.error = false;
         
         vm.dataLoading = true;
-        vm.rowCollection = [];
         ProfileService.GetAll().then(function (data) {
                 if (data.success) {
                     vm.profiles = data.users;

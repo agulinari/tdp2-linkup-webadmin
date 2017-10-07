@@ -1,38 +1,26 @@
 <div ng-controller="ProfileController as vm">
 <div class="container">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-8">
 
             <div class="card hovercard">
                 <div class="cardheader">
-
+                	<img data-ng-src="data:image/png;base64,{{vm.image}}" data-err-src="assets/images/avatar.png" style='height: 100%; width: 100%; object-fit: cover'/>
                 </div>
                 <div class="avatar">
-                    <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                	<img data-ng-src="data:image/png;base64,{{vm.avatar}}" data-err-src="assets/images/avatar.png"/>
+                    <!--img alt="" src="http://lorempixel.com/100/100/people/9/"-->
                 </div>
                 <div class="info">
                     <div class="title">
-                        <a target="_blank" href="http://scripteden.com/">Script Eden</a>
+                        <a target="_blank" href="http://scripteden.com/">{{vm.profile.firstName}} {{vm.profile.lastName}}</a>
                     </div>
-                    <div class="desc">Passionate designer</div>
-                    <div class="desc">Curious developer</div>
-                    <div class="desc">Tech geek</div>
+                    <div class="desc"><i class="fa fa-briefcase fa-fw"></i> {{vm.profile.occupation}}</div>
+                    <div class="desc"><i class="fa fa-university fa-fw"></i> {{vm.profile.education}}</div>
+                    <div class="desc"><i class="fa fa-comments fa-fw"></i> {{vm.profile.comments}}</div>
                 </div>
                 <div class="bottom">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a class="btn btn-danger btn-sm" rel="publisher"
-                       href="https://plus.google.com/+ahmshahnuralam">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm" rel="publisher"
-                       href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-behance"></i>
-                    </a>
+                  <button type="button" class="btn btn-primary">Bloquear</button>
                 </div>
             </div>
 

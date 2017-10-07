@@ -128,11 +128,6 @@ angular
               name:'sbAdminApp',
               files:[
               'home/home.controller.js'
-              /*'scripts/controllers/main.js',
-              'scripts/directives/timeline/timeline.js',
-              'scripts/directives/notifications/notifications.js',
-              'scripts/directives/chat/chat.js',
-              'scripts/directives/dashboard/stats/stats.js'*/
               ]
             })
           }
@@ -150,11 +145,6 @@ angular
                 'abuse/abuse.controller.js',
                 'app-services/flash.service.js',
                 'app-services/abuse.service.js'
-              /*'scripts/controllers/main.js',
-              'scripts/directives/timeline/timeline.js',
-              'scripts/directives/notifications/notifications.js',
-              'scripts/directives/chat/chat.js',
-              'scripts/directives/dashboard/stats/stats.js'*/
               ]
             })
           }
@@ -186,7 +176,8 @@ angular
               name:'sbAdminApp',
               files:[
                 'profile/profile.controller.js',
-                'app-services/profile.service.js'            ]
+                'app-services/profile.service.js'
+              ]
             })
           }
         }
