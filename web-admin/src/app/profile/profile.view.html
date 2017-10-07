@@ -4,16 +4,24 @@
 		<div class="col-lg-8">
 
             <div class="card hovercard">
-                <div class="cardheader">
-                	<img data-ng-src="data:image/png;base64,{{vm.image}}" data-err-src="assets/images/avatar.png" style='height: 100%; width: 100%; object-fit: cover'/>
+                <div  ng-if="!vm.showLoader" class="cardheader">
+                    <img data-ng-src="data:image/png;base64,{{vm.image}}" data-err-src="assets/images/avatar.png" style='height: 100%; width: 100%; object-fit: cover'/>
+                    
                 </div>
-                <div class="avatar">
+                <div ng-if="vm.showLoader" class="cardheader">
+                    <div class="loader"></div>
+                </div>
+                
+                <div ng-if="!vm.avatarLoading" class="avatar">
                 	<img data-ng-src="data:image/png;base64,{{vm.avatar}}" data-err-src="assets/images/avatar.png"/>
                     <!--img alt="" src="http://lorempixel.com/100/100/people/9/"-->
                 </div>
+                <div ng-if="vm.avatarLoading" class="avatar">
+                    <img data-ng-src="assets/images/default-image.png"/>
+                </div>
                 <div class="info">
                     <div class="title">
-                        <a target="_blank" href="http://scripteden.com/">{{vm.profile.firstName}} {{vm.profile.lastName}}</a>
+                        <a target="_blank" href="http://scripteden.com/">{{vm.profile.firstName}} {{vm.profile.lastName}}, {{vm.age}}</a>
                     </div>
                     <div class="desc"><i class="fa fa-briefcase fa-fw"></i> {{vm.profile.occupation}}</div>
                     <div class="desc"><i class="fa fa-university fa-fw"></i> {{vm.profile.education}}</div>
