@@ -13,7 +13,7 @@
 				<th>Denunciado</th>
 				<th>Fecha de denuncia</th>
 				<th>Motivo</th>
-				<th>email</th>
+				<th>Comentarios</th>
 			</tr>
 			<tr>
 				<th colspan="5">
@@ -23,11 +23,11 @@
 			</thead>
 			<tbody>
 			<tr ng-repeat="row in abuses">
-				<td>{{row.firstName}}</td>
-				<td>{{row.lastName}}</td>
-				<td>{{row.birthDate}}</td>
-				<td>{{row.balance}}</td>
-				<td>{{row.email}}</td>
+				<td>{{row.reporter}}</td>
+				<td>{{row.reported}}</td>
+				<td>{{row.date}}</td>
+				<td>{{row.reason}}</td>
+				<td>{{row.comments}}</td>
 			</tr>
 			</tbody>
 			<tfoot>

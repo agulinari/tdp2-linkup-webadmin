@@ -160,6 +160,22 @@ angular
           }
         }
       })
+      .state('dashboard.profile',{
+        url:'/profile',
+        controller: 'ProfileController',
+        templateUrl:'profile/profile.view.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+                'profile/profile.controller.js',
+                'app-services/profile.service.js'
+              ]
+            })
+          }
+        }
+      })
       
   }]);
 
