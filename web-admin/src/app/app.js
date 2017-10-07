@@ -162,21 +162,35 @@ angular
       })
       .state('dashboard.profile',{
         url:'/profile',
-        controller: 'ProfileController',
-        templateUrl:'profile/profile.view.html',
+        controller: 'ProfilesController',
+        templateUrl:'profile/profiles.view.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
               name:'sbAdminApp',
               files:[
-                'profile/profile.controller.js',
+                'profile/profiles.controller.js',
                 'app-services/profile.service.js'
               ]
             })
           }
         }
       })
-      
+       .state('dashboard.profiledetail', {
+            url: '/profile/:fbid',
+            templateUrl: 'profile/profile.view.html',
+            controller: 'ProfileController',
+            resolve: {
+            loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+                'profile/profile.controller.js',
+                'app-services/profile.service.js'            ]
+            })
+          }
+        }
+        })
   }]);
 
     
