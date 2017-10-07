@@ -6,6 +6,6 @@ var router = express.Router();
 // Define routes
 router.get('/', controller.index);
 router.get('/:id', controller.show);
-
+router.put('/', controller.update);
 // Export module
 module.exports = router;

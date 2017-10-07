@@ -19,7 +19,7 @@
                 <div ng-if="vm.avatarLoading" class="avatar">
                     <img data-ng-src="assets/images/default-image.png"/>
                 </div>
-                <div class="info">
+                <div ng-show="!vm.dataLoading" class="info">
                     <div class="title">
                         <a target="_blank" href="http://scripteden.com/">{{vm.profile.firstName}} {{vm.profile.lastName}}, {{vm.age}}</a>
                     </div>
@@ -27,8 +27,12 @@
                     <div class="desc"><i class="fa fa-university fa-fw"></i> {{vm.profile.education}}</div>
                     <div class="desc"><i class="fa fa-comments fa-fw"></i> {{vm.profile.comments}}</div>
                 </div>
-                <div class="bottom">
-                  <button type="button" class="btn btn-primary">Bloquear</button>
+                <div ng-show="!vm.dataLoading" class="bottom">
+
+                  <button ng-show="vm.profile.control.isActive" ng-disabled="vm.buttonDisabled" ng-click="vm.activar(false)" type="button" class="btn btn-primary">Desactivar</button>
+                  <button ng-show="!vm.profile.control.isActive" ng-disabled="vm.buttonDisabled" ng-click="vm.activar(true)" type="button" class="btn btn-primary">Activar</button>
+
+                
                 </div>
             </div>
 

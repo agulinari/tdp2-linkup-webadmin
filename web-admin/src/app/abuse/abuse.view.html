@@ -6,7 +6,7 @@
      </div>
      <div class="row">
         <!-- /.col-lg-12 -->
-        <table st-safe-src="vm.rowCollection" st-table="abuses" class="table table-striped">
+        <table st-safe-src="vm.abuses" st-table="abuses" class="table table-striped">
 			<thead>
 			<tr>
 				<th>Denunciante</th>
@@ -14,6 +14,7 @@
 				<th>Fecha de denuncia</th>
 				<th>Motivo</th>
 				<th>Comentarios</th>
+				<th>Estado</th>
 			</tr>
 			<tr>
 				<th colspan="5">
@@ -23,11 +24,12 @@
 			</thead>
 			<tbody>
 			<tr ng-repeat="row in abuses">
-				<td>{{row.reporter}}</td>
-				<td>{{row.reported}}</td>
-				<td>{{row.date}}</td>
-				<td>{{row.reason}}</td>
-				<td>{{row.comments}}</td>
+				<td><a ui-sref="dashboard.profiledetail({fbid: row.idReporter})">{{row.fullnameReporter}}</a></td>
+				<td><a ui-sref="dashboard.profiledetail({fbid: row.idReported})">{{row.fullnameReported}}</a></td>
+				<td>{{row.time}}</td>
+				<td>{{row.idCategory}}</td>
+				<td>{{row.comment}}</td>
+				<td>{{row.isOpen}}</td>
 			</tr>
 			</tbody>
 			<tfoot>

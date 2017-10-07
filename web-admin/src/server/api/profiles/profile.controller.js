@@ -40,6 +40,17 @@ exports.image = function(req, result) {
  
 };
 
+exports.update = function(req, result) {
+  request({ url: 'https://linkuptdp.herokuapp.com/user', method: 'PUT', json: req.body}, (err, res, body) => {
+      if (err) { 
+        return handleError(result, err);
+      }
+      else {
+        return result.status(200).json(body);
+      }
+    });
+  
+};
 
 // Error function
 function handleError(res, err) {

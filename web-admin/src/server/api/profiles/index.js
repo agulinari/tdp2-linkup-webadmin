@@ -7,6 +7,6 @@ var router = express.Router();
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.get('/image/:id/:index', controller.image)
-
+router.put('/', controller.update);
 // Export module
 module.exports = router;

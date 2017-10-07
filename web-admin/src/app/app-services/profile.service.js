@@ -12,6 +12,7 @@
         service.GetAll = GetAll;
         service.GetById = GetById;
         service.GetImage = GetImage;
+        service.Update = Update;
 
         return service;
 
@@ -25,6 +26,18 @@
 
         function GetImage(id, index){
             return $http.get('/api/profiles/image/' + id + '/' + index).then(handleSuccess, handleError('Error getting image profile by id'));
+        }
+
+        function Update(id, isActive) {
+            var body = {
+                "user": {
+                    "fbid": id,
+                    "control": {
+                                "isActive": isActive
+                            }
+                    }
+            };
+            return $http.put('/api/profiles', body).then(handleSuccess, handleError('Error updating profile'));
         }
 
         // private functions

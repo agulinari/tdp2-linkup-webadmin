@@ -10,10 +10,10 @@
         vm.error = false;
         
         vm.dataLoading = true;
-        vm.rowCollection = [];
+        vm.abuses = [];
         AbuseService.GetAll().then(function (data) {
                 if (data.success) {
-                    vm.rowCollection = data.data;
+                    vm.abuses = data.abuseReports;
                     vm.dataLoading = false;
                 } else {
                     vm.error = true;

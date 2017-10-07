@@ -12,6 +12,7 @@
         vm.showLoader = true;
         vm.dataLoading = true;
         vm.avatarLoading = true;
+        vm.buttonDisabled = false;
 
         ProfileService.GetById($stateParams.fbid).then(function (data) {
                 if (data.success) {
@@ -46,6 +47,21 @@
                     //Mostrar mensaje
                 }
         });
+
+        vm.activar = function (isActive){
+            vm.buttonDisabled = true;
+            
+            ProfileService.Update($stateParams.fbid, isActive).then(function (data) {
+                if (data.success) {
+                    vm.profile = data.user;
+                    vm.buttonDisabled = false;
+                } else {
+                    vm.error = true;
+                    vm.buttonDisabled = false;
+                    //Mostrar mensaje
+                }
+            });
+        }
 
         function getAge(dateString) {
                         var today = new Date();
