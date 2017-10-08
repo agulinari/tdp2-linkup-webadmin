@@ -30,4 +30,12 @@
         		return 'Femenino';
         	}
         }
+
+        vm.getStatus = function(status){
+            if (status == true){
+                return 'Activo';
+            }else{
+                return 'Inactivo';
+            }
+        }
     }

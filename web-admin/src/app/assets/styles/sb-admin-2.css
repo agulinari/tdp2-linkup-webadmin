@@ -592,7 +592,7 @@ table.dataTable thead .sorting:after {
 
 .card.hovercard .info .desc {
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     color: #737373;
     text-overflow: ellipsis;

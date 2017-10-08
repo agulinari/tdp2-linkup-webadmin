@@ -21,17 +21,24 @@
                 </div>
                 <div ng-show="!vm.dataLoading" class="info">
                     <div class="title">
-                        <a target="_blank" href="http://scripteden.com/">{{vm.profile.firstName}} {{vm.profile.lastName}}, {{vm.age}}</a>
+                        <a target="_blank" href="http://scripteden.com/"><i class="fa fa-fw" ng-class="{male: 'fa-mars', female:'fa-venus'}[vm.profile.gender]"></i> {{vm.profile.firstName}} {{vm.profile.lastName}}, {{vm.age}}</a>
                     </div>
-                    <div class="desc"><i class="fa fa-briefcase fa-fw"></i> {{vm.profile.occupation}}</div>
-                    <div class="desc"><i class="fa fa-university fa-fw"></i> {{vm.profile.education}}</div>
-                    <div class="desc"><i class="fa fa-comments fa-fw"></i> {{vm.profile.comments}}</div>
+                    <br/>
+                    <hr ng-show="vm.profile.occupation">
+                    <div ng-show="vm.profile.occupation" class="desc"><i class="fa fa-briefcase fa-fw"></i> {{vm.profile.occupation}}</div>
+                    <hr ng-show="vm.profile.education">
+                    <div ng-show="vm.profile.education" class="desc"><i class="fa fa-university fa-fw"></i> {{vm.profile.education}}</div>
+                    <hr ng-show="vm.profile.location.name">
+                    <div ng-show="vm.profile.location.name" class="desc"><i class="fa fa-map-marker fa-fw"></i> {{vm.profile.location.name}}</div>
+                    <hr ng-show="vm.profile.comments">
+                    <div ng-show="vm.profile.comments" class="desc"><i class="fa fa-comments fa-fw"></i> {{vm.profile.comments}}</div>
+                    <hr>
                 </div>
                 <div ng-show="!vm.dataLoading" class="bottom">
 
                   <button ng-show="vm.profile.control.isActive" ng-disabled="vm.buttonDisabled" ng-click="vm.activar(false)" type="button" class="btn btn-primary">Desactivar</button>
                   <button ng-show="!vm.profile.control.isActive" ng-disabled="vm.buttonDisabled" ng-click="vm.activar(true)" type="button" class="btn btn-primary">Activar</button>
-
+                  <div ng-show="!vm.profile.control.isActive"><h6>Fecha de desactivaci&oacute;n: {{vm.profile.control.deactivationTime | date:'dd-MM-yyyy HH:mm:ss'}}</h6></div>
                 
                 </div>
             </div>
