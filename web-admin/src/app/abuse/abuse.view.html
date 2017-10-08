@@ -1,4 +1,5 @@
 <div ng-controller="AbuseController as vm">
+<form>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Gesti&oacute;n de Denuncias</h1>
@@ -15,9 +16,10 @@
 				<th>Motivo</th>
 				<th>Comentarios</th>
 				<th>Estado</th>
+				<th>Acci&oacute;n</th>
 			</tr>
 			<tr>
-				<th colspan="5">
+				<th colspan="7">
 					<input st-search placeholder="Buscar" class="input-sm form-control" type="search"/>
 				</th>
 			</tr>
@@ -26,10 +28,11 @@
 			<tr ng-repeat="row in abuses">
 				<td><a ui-sref="dashboard.profiledetail({fbid: row.idReporter})">{{row.fullnameReporter}}</a></td>
 				<td><a ui-sref="dashboard.profiledetail({fbid: row.idReported})">{{row.fullnameReported}}</a></td>
-				<td>{{row.time}}</td>
-				<td>{{row.idCategory}}</td>
+				<td>{{row.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+				<td>{{vm.getCategory(row.idCategory)}}</td>
 				<td>{{row.comment}}</td>
-				<td>{{row.isOpen}}</td>
+				<td>{{vm.getStatus(row.isOpen)}}</td>
+				<td><button class="btn btn-primary" ng-if="row.isOpen" ng-disabled="vm.buttonDisabled" ng-click="vm.close(row)"><strong>Cerrar</strong></button></td>
 			</tr>
 			</tbody>
 			<tfoot>
@@ -41,4 +44,5 @@
 			</tfoot>
 		</table>
     </div>
+</form>
 </div>
