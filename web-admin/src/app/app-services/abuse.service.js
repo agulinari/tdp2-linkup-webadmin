@@ -9,12 +9,22 @@
         var service = {};
 
         service.GetAll = GetAll;
+        service.GetOpen = GetOpen;
+        service.GetClosed = GetClosed;
         service.Update = Update;
 
         return service;
 
         function GetAll() {
             return $http.get('/api/abuses').then(handleSuccess, handleError('Error getting all abuse'));
+        }
+
+        function GetOpen() {
+            return $http.get('/api/abuses/open').then(handleSuccess, handleError('Error getting open abuses'));
+        }
+
+        function GetClosed() {
+            return $http.get('/api/abuses/closed').then(handleSuccess, handleError('Error getting closed abuses'));
         }
 
         function Update(id, isOpen) {

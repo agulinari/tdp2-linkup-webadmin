@@ -5,7 +5,8 @@
             <h1 class="page-header">Gesti&oacute;n de Denuncias</h1>
         </div>
      </div>
-     <div class="row">
+
+	<div class="row">
         <!-- /.col-lg-12 -->
         <table st-safe-src="vm.abuses" st-table="abuses" class="table table-striped">
 			<thead>
@@ -19,8 +20,19 @@
 				<th>Acci&oacute;n</th>
 			</tr>
 			<tr>
-				<th colspan="7">
+				<th colspan="2">
 					<input st-search placeholder="Buscar" class="input-sm form-control" type="search"/>
+				</th>
+				<th colspane="5">				
+     				<label class="radio-inline">
+						<input type="radio" ng-model="vm.radio" ng-value="0" name="optradio">Abiertas
+					</label>
+					<label class="radio-inline">
+						<input type="radio" ng-model="vm.radio" ng-value="1" name="optradio">Cerradas
+					</label>
+					<label class="radio-inline">
+						 <input type="radio" ng-model="vm.radio"  ng-value="2" name="optradio">Todas
+					</label>	
 				</th>
 			</tr>
 			</thead>
@@ -28,7 +40,7 @@
 			<tr ng-repeat="row in abuses">
 				<td><a ui-sref="dashboard.profiledetail({fbid: row.idReporter})">{{row.fullnameReporter}}</a></td>
 				<td><a ui-sref="dashboard.profiledetail({fbid: row.idReported})">{{row.fullnameReported}}</a></td>
-				<td>{{row.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+				<td>{{row.time | date:'dd-MM-yyyy HH:mm:ss'}}</td>
 				<td>{{vm.getCategory(row.idCategory)}}</td>
 				<td>{{row.comment}}</td>
 				<td>{{vm.getStatus(row.isOpen)}}</td>

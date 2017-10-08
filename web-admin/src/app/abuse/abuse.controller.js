@@ -4,16 +4,41 @@
         .module('sbAdminApp')
         .controller('AbuseController', AbuseController);
 
-    AbuseController.$inject = ['AbuseService', '$state', '$rootScope', 'FlashService'];
-    function AbuseController(AbuseService, $state, $rootScope, FlashService) {
+    AbuseController.$inject = ['AbuseService', '$state', '$scope', '$rootScope', 'FlashService'];
+    function AbuseController(AbuseService, $state, $scope, $rootScope, FlashService) {
         var vm = this;
         vm.error = false;
         
         vm.dataLoading = true;
         vm.buttonDisabled = false;
         vm.abuses = [];
+        vm.itemsByPage=10;
+        vm.radio = '2';
+
+        vm.getAll = getAll;
+        vm.getOpen = getOpen;
+        vm.getClosed = getClosed;
+
+        getAll();
+
+        $scope.$watch("vm.radio", function(newValue, oldValue){
+            if(newValue != oldValue){
+              switch(newValue) {
+                case 0:
+                    getOpen();
+                    break;
+                case 1:
+                    getClosed();
+                    break;
+                default:
+                    getAll();
+                    break;
+            }
+          }
+        });
         
-        AbuseService.GetAll().then(function (data) {
+        function getAll() {
+            AbuseService.GetAll().then(function (data) {
                 if (data.success) {
                     vm.abuses = data.abuseReports;
                     vm.dataLoading = false;
@@ -23,14 +48,40 @@
                     vm.dataLoading = false;
                 }
             });
+        }
 
-        vm.itemsByPage=10;
+        function getOpen() {
+            AbuseService.GetOpen().then(function (data) {
+                if (data.success) {
+                    vm.abuses = data.abuseReports;
+                    vm.dataLoading = false;
+                } else {
+                    vm.error = true;
+                    FlashService.Error(data.message);
+                    vm.dataLoading = false;
+                }
+            });
+        }
+
+        function getClosed() {
+            AbuseService.GetClosed().then(function (data) {
+                if (data.success) {
+                    vm.abuses = data.abuseReports;
+                    vm.dataLoading = false;
+                } else {
+                    vm.error = true;
+                    FlashService.Error(data.message);
+                    vm.dataLoading = false;
+                }
+            });
+        }
+
         vm.getCategory = function (category){
             switch(category) {
                 case 1:
-                    return 'Fotos inapropiadas';
+                    return 'Lenguaje abusivo';
                 case 2:
-                    return 'Lenguaje Abusivo';
+                    return 'Fotos inapropiada';
                 case 3:
                     return 'Spam';
                 default:
