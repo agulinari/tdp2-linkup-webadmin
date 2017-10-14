@@ -14,6 +14,7 @@ angular
     'ui.bootstrap',
     'ngAnimate',
     'smart-table',
+    'flow',
     'angular-loading-bar',
   ])
   .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
@@ -182,6 +183,35 @@ angular
           }
         }
         })
-  }]);
+        .state('dashboard.advertising', {
+            url: '/advertising',
+            templateUrl: 'advertising/advertising-form.view.html',
+            controller: 'AdvertFormController',
+            resolve: {
+            loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'sbAdminApp',
+              files:[
+                'advertising/advertising-form.controller.js'              ]
+            })
+          }
+        }
+        })
+  }])
+    .config(['flowFactoryProvider', function (flowFactoryProvider) {
+      flowFactoryProvider.defaults = {
+        target: 'upload.php',
+        permanentErrors: [404, 500, 501],
+        maxChunkRetries: 1,
+        chunkRetryInterval: 5000,
+        simultaneousUploads: 4
+      };
+      flowFactoryProvider.on('catchAll', function (event) {
+        console.log('catchAll', arguments);
+      });
+      // Can be used with different implementations of Flow.js
+      // flowFactoryProvider.factory = fustyFlowFactory;
+    }]);
+
 
     

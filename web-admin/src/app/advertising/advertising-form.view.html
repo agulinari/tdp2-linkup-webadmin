@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Alta de Publicidad</h1>
+  <hr class="soften"/>
+  <form name="advertForm" ng-submit="submitForm(advertForm.$valid)" novalidate>
+	<div class="form-group" ng-class="{ 'has-error' : advertForm.title.$invalid && !advertForm.title.$pristine }">
+	    <h3>T&iacute;tulo</h3>
+	    <input type="text" name="title" class="form-control" ng-model="advert.title" required>
+	    <p ng-show="advertForm.title.$invalid && !advertForm.title.$pristine" class="help-block">Se requiere un t&iacute;tulo</p>
+	</div>
+	<div class="form-group" ng-class="{ 'has-error' : advertForm.url.$invalid && !advertForm.url.$pristine }">
+	    <h3>Website</h3>
+	    <input type="url" name="url" class="form-control" ng-model="advert.url" required>
+	    <p ng-show="advertForm.url.$invalid && !advertForm.url.$pristine" class="help-block">Se requiere una url v&aacute;lida</p>
+	</div>
+	<div flow-init="{singleFile:true}" flow-file-added="processImage($file)"  class="ng-scope">
+		<h3>
+		<a name="image-example" class="anchor" href="#image-example"><span class="octicon octicon-link"></span></a>Imagen</h3>
+		<div class="thumbnail" ng-show="!$flow.files.length" flow-drop flow-drag-enter="style={border:'4px solid green'}" flow-drag-leave="style={}" ng-style="style">
+		  <img data-ng-src="assets/images/noimage.png">
+		</div>
+		<div class="thumbnail ng-hide" ng-show="$flow.files.length">
+		  <img flow-img="$flow.files[0]">
+		</div>
+		<div>
+		  <span class="btn btn-primary" ng-show="!$flow.files.length" flow-btn="">Seleccionar imagen<input type="file" style="visibility: hidden; position: absolute;"></span>
+		  <span class="btn btn-info ng-hide" ng-show="$flow.files.length" flow-btn="">Cambiar<input type="file" style="visibility: hidden; position: absolute;"></span>
+		  <span class="btn btn-danger ng-hide" ng-show="$flow.files.length" ng-click="removeImage($flow)">
+		    Eliminar
+		  </span>
+		</div>
+		<p>
+		  S&oacute;lo se permiten archivos PNG,GIF,JPG,JEPG.
+		</p>
+	</div>
+	<button type="submit" class="btn btn-primary" ng-disabled="advertForm.$invalid || advert.image==null">Guardar</button>
+   </form>
+</div>
