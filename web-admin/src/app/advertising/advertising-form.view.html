@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Alta de Publicidad</h1>
   <hr class="soften"/>
-  <form name="advertForm" ng-submit="submitForm(advertForm.$valid)" novalidate>
+  <form name="advertForm" ng-submit="submit()" novalidate>
 	<div class="form-group" ng-class="{ 'has-error' : advertForm.title.$invalid && !advertForm.title.$pristine }">
 	    <h3>T&iacute;tulo</h3>
 	    <input type="text" name="title" class="form-control" ng-model="advert.title" required>

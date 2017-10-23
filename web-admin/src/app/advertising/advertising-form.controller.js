@@ -4,8 +4,8 @@
         .module('sbAdminApp')
        .controller('AdvertFormController', AdvertFormController);
 
-    AdvertFormController.$inject = ['$state', '$scope', '$stateParams', '$rootScope'];
-    function AdvertFormController($state, $scope, $stateParams, $rootScope) {
+    AdvertFormController.$inject = ['AdvertisingService','$state', '$scope', '$stateParams', '$rootScope', 'FlashService'];
+    function AdvertFormController(AdvertisingService,$state, $scope, $stateParams, $rootScope, FlashService) {
         var vm = this;
         vm.error = false;
         $scope.advert = null;
@@ -20,7 +20,9 @@
 
 			var fileReader = new FileReader();
 			    fileReader.onload = function (event) {
-			        $scope.advert.image = event.target.result;
+                    var strImage = event.target.result.split(',');
+			        $scope.advert.image = (strImage.length>1)?strImage[1]:
+                                          ((strImage.length==1)?strImage[0]:'');
 			    };
 			fileReader.readAsDataURL(flowFile.file);
 			return true;
@@ -30,4 +32,22 @@
 			$scope.advert.image = null;
 			$flow.cancel();
 		}
+            
+        $scope.submit = function() {
+         
+            var adDesc = $scope.advert.title;
+            var adImage = $scope.advert.image;
+            var adUrl = $scope.advert.url;                
+                        
+            AdvertisingService.Add(adDesc,adImage,adUrl).then(function (data) {
+                if (data.success) {
+                    FlashService.Success("Advertising added.");
+                } else {
+                    FlashService.Error(data.message);
+                }
+            });
+                        
+        }
+
+        
     }

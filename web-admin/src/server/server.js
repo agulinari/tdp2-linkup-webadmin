@@ -21,6 +21,7 @@ mongoose.connect('mongodb://localhost/simple', function(err) {
     }
 });
 
+  server.use('/api/advertises', require('./api/advertises'));
   server.use('/api/users', require('./api/users'));
   server.use('/api/abuses', require('./api/abuses'));
   server.use('/api/profiles', require('./api/profiles'));

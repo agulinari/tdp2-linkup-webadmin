@@ -192,7 +192,10 @@ angular
             return $ocLazyLoad.load({
               name:'sbAdminApp',
               files:[
-                'advertising/advertising-form.controller.js'              ]
+                'advertising/advertising-form.controller.js',
+                'app-services/flash.service.js',
+                'app-services/advertising.service.js'  
+              ]
             })
           }
         }

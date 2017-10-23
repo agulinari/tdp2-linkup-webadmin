@@ -7,9 +7,9 @@
   },
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.1",
+    "express": "^4.16.2",
     "lodash": "^4.17.4",
-    "mongoose": "^4.11.13",
+    "mongoose": "^4.12.4",
     "request": "^2.83.0"
   },
   "devDependencies": {
