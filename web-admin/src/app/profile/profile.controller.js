@@ -4,8 +4,8 @@
         .module('sbAdminApp')
         .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['ProfileService', '$state', '$scope', '$stateParams', '$rootScope'];
-    function ProfileController(ProfileService, $state, $scope, $stateParams, $rootScope) {
+    ProfileController.$inject = ['ProfileService','AbuseService', '$state', '$scope', '$stateParams', '$rootScope'];
+    function ProfileController(ProfileService,AbuseService, $state, $scope, $stateParams, $rootScope) {
         var vm = this;
         vm.error = false;
         vm.age = null;
@@ -61,6 +61,15 @@
                     //Mostrar mensaje
                 }
             });
+            
+            if(!isActive){ //Se cierran las denuncias del usuario que se esta desactivando
+                AbuseService.Update($stateParams.fbid,null).then(function(data){
+                   if(!data.success){
+                       vm.error = true;
+                       vm.buttonDisabled = false;
+                   }
+                });
+            }
         }
 
         function getAge(dateString) {

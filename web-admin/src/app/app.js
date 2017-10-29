@@ -177,7 +177,8 @@ angular
               name:'sbAdminApp',
               files:[
                 'profile/profile.controller.js',
-                'app-services/profile.service.js'
+                'app-services/profile.service.js',
+                'app-services/abuse.service.js'
               ]
             })
           }

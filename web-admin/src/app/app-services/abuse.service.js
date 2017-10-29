@@ -28,16 +28,24 @@
         }
 
         function Update(id, isOpen) {
-            var body = {
+            var body1 = { //Se actualiza un solo abuseReport
                 "abuseReport" : {
                     "_id" : id,
                     "isOpen" : isOpen  
                 }       
             };
+            
+            var body2 = {   //Se cierran los abuseReport de un usuario
+                "abuseReport" : {
+                    "idUser" : id
+                }
+            };
+            
+            var body = (isOpen!=undefined || isOpen!=null)?body1:body2;
+            
             return $http.put('/api/abuses', body).then(handleSuccess, handleError('Error updating user'));
         }
-
-
+                
         // private functions
 
         function handleSuccess(res) {
