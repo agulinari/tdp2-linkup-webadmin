@@ -1,0 +1,29 @@
+<div ng-controller="ActiveUsersReportController as vm">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Reporte de Usuarios Activos</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    
+    <!-- /.panel -->
+    <div class="row">
+     
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-line-chart fa-fw"></i> Gr&aacute;fico
+                </div>
+                <div class="panel-body">
+                    <canvas id="line" class="chart chart-line chart-xl" data="vm.line.data" labels="vm.line.labels" legend="true"
+                    click="vm.line.onClick" series="vm.line.series"></canvas>
+                </div>
+        
+   
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+</div>

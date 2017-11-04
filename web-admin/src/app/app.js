@@ -185,7 +185,7 @@ angular
         }
         })
         .state('dashboard.advertising', {
-            url: '/advertising',
+            url: '/',
             templateUrl: 'advertising/advertising-form.view.html',
             controller: 'AdvertFormController',
             resolve: {
@@ -200,6 +200,99 @@ angular
             })
           }
         }
+        })
+        .state('dashboard.userreport', {
+            url: '/reports/activeusers',
+            templateUrl: 'reports/user-report.view.html',
+            controller: 'ActiveUsersReportController',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+               return $ocLazyLoad.load({
+                  name:'chart.js',
+                  files:[
+                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                    'bower_components/angular-chart.js/dist/angular-chart.css'
+                  ]
+                }),
+                $ocLazyLoad.load({
+                  name:'sbAdminApp',
+                  files:[
+                    'reports/user-report.controller.js',
+                    'app-services/reports.service.js'                   
+                  ]
+                })
+              }
+            }
+        
+        })
+        .state('dashboard.abusereport', {
+            url: '/reports/abuses',
+            templateUrl: 'reports/abuse-report.view.html',
+            controller: 'AbuseReportController',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+               return $ocLazyLoad.load({
+                  name:'chart.js',
+                  files:[
+                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                    'bower_components/angular-chart.js/dist/angular-chart.css'
+                  ]
+                }),
+                $ocLazyLoad.load({
+                  name:'sbAdminApp',
+                  files:[
+                    'reports/abuse-report.controller.js',
+                    'app-services/reports.service.js'                   
+                  ]
+                })
+              }
+            }
+        })
+        .state('dashboard.abusereport.pie', {
+            url: '/reports/abuses/pie',
+            templateUrl: 'reports/pie.view.html',
+            controller: 'PieController',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+               return $ocLazyLoad.load({
+                  name:'chart.js',
+                  files:[
+                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                    'bower_components/angular-chart.js/dist/angular-chart.css'
+                  ]
+                }),
+                $ocLazyLoad.load({
+                  name:'sbAdminApp',
+                  files:[
+                    'reports/pie.controller.js',
+                    'app-services/reports.service.js'                   
+                  ]
+                })
+              }
+            }
+        })
+        .state('dashboard.abusereport.piedetail', {
+            url: '/reports/abuses/piedetail',
+            templateUrl: 'reports/pie-detail.view.html',
+            controller: 'PieDetailController',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+               return $ocLazyLoad.load({
+                  name:'chart.js',
+                  files:[
+                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                    'bower_components/angular-chart.js/dist/angular-chart.css'
+                  ]
+                }),
+                $ocLazyLoad.load({
+                  name:'sbAdminApp',
+                  files:[
+                    'reports/pie-detail.controller.js',
+                    'app-services/reports.service.js'                   
+                  ]
+                })
+              }
+            }
         })
   }])
     .config(['flowFactoryProvider', function (flowFactoryProvider) {

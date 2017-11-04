@@ -1,0 +1,14 @@
+  <div ng-controller="PieController as vm">
+
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   <i class="fa fa-pie-chart fa-fw"></i>  Gr&aacute;fico
+                </div>
+                <div class="panel-body">
+                    <canvas id="pie" class="chart chart-pie chart-xs" data="vm.pie.data" labels="vm.pie.labels" legend="true" click="vm.pie.onClick"></canvas>
+                </div>
+            </div>
+        </div>
+</div>
