@@ -11,6 +11,7 @@
         service.GetActiveUsers = GetActiveUsers;
         service.GetAbuses = GetAbuses;
         service.GetBannedUsers = GetBannedUsers;
+        service.GetBanDetail = GetBanDetail;
 
         return service;
 
@@ -22,8 +23,12 @@
             return $http.get('/api/reports/abuses?from='+fromDate+'&to='+toDate).then(handleSuccess, handleError('Error getting open abuses'));
         }
 
-        function GetBannedUsers(fromDate, toDate, abuseType) {
-            return $http.get('/api/reports/bannedusers?from='+fromDate+'&to='+toDate+'&abuse='+abuseType).then(handleSuccess, handleError('Error getting open abuses'));
+        function GetBannedUsers() {
+            return $http.get('/api/reports/bannedusers').then(handleSuccess, handleError('Error getting open abuses'));
+        }
+
+        function GetBanDetail(isActive){
+             return $http.get('/api/reports/bandetail?isActive='+isActive).then(handleSuccess, handleError('Error getting ban detail')); 
         }
                 
         // private functions

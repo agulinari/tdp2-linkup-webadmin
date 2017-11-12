@@ -27,8 +27,22 @@
         vm.getReport = function(fromDate, toDate){
             ReportsService.GetActiveUsers(fromDate, toDate).then(function (data) {
                     if (data.success) {
+                        
+
+                        var labels = [];    
+                        var basicUsers = [];
+                        var premiumUsers = [];
+                        for (var i = 0, len = data.stats.length; i < len; i++) {
+                          labels.push(data.stats[i].date);
+                          basicUsers.push(data.stats[i].basic);
+                          premiumUsers.push(data.stats[i].premium);
+                        }
+                        var users = [basicUsers, premiumUsers];
+
+                        vm.line.labels = labels;
+                        vm.line.data = users;
+
                         vm.dataLoading = false;
-                        vm.line.data = data.data;
                     } else {
                         vm.error = true;
                         //Mostrar mensaje
@@ -37,7 +51,7 @@
             });
         };
 
-        vm.getReport('fecha1','fecha2');
+        vm.getReport('01/01/2017','07/11/2017');
 
 
     }

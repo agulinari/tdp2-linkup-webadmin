@@ -7,6 +7,7 @@ var router = express.Router();
 router.get('/activeusers', controller.getactive);
 router.get('/abuses', controller.getabuses);
 router.get('/bannedusers', controller.getbanned);
+router.get('/bandetail', controller.getbandetail);
 
 // Export module
 module.exports = router;

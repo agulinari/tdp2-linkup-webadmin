@@ -1,0 +1,14 @@
+  <div ng-controller="BanPieDetailController as vm">
+
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a ui-sref="dashboard.banreport.pie"><i class="fa fa-arrow-left  fa-fw"></i> Volver</a> 
+                </div>
+                <div class="panel-body">
+                    <canvas id="pie" class="chart chart-pie chart-xs" data="vm.pie.data" labels="vm.pie.labels" legend="true" click="vm.pie.onClick"></canvas>
+                </div>
+            </div>
+        </div>
+</div>

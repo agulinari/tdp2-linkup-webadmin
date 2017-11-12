@@ -294,6 +294,75 @@ angular
               }
             }
         })
+         .state('dashboard.banreport', {
+            url: '/reports/abuses',
+            templateUrl: 'reports/ban-report.view.html',
+            controller: 'BanReportController',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+               return $ocLazyLoad.load({
+                  name:'chart.js',
+                  files:[
+                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                    'bower_components/angular-chart.js/dist/angular-chart.css'
+                  ]
+                }),
+                $ocLazyLoad.load({
+                  name:'sbAdminApp',
+                  files:[
+                    'reports/ban-report.controller.js',
+                    'app-services/reports.service.js'                   
+                  ]
+                })
+              }
+            }
+        })
+        .state('dashboard.banreport.pie', {
+            url: '/reports/abuses/banpie',
+            templateUrl: 'reports/banpie.view.html',
+            controller: 'BanPieController',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+               return $ocLazyLoad.load({
+                  name:'chart.js',
+                  files:[
+                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                    'bower_components/angular-chart.js/dist/angular-chart.css'
+                  ]
+                }),
+                $ocLazyLoad.load({
+                  name:'sbAdminApp',
+                  files:[
+                    'reports/banpie.controller.js',
+                    'app-services/reports.service.js'                   
+                  ]
+                })
+              }
+            }
+        })
+        .state('dashboard.banreport.piedetail', {
+            url: '/reports/abuses/banpiedetail',
+            templateUrl: 'reports/banpie-detail.view.html',
+            controller: 'BanPieDetailController',
+            resolve: {
+              loadMyFiles:function($ocLazyLoad) {
+               return $ocLazyLoad.load({
+                  name:'chart.js',
+                  files:[
+                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
+                    'bower_components/angular-chart.js/dist/angular-chart.css'
+                  ]
+                }),
+                $ocLazyLoad.load({
+                  name:'sbAdminApp',
+                  files:[
+                    'reports/banpie-detail.controller.js',
+                    'app-services/reports.service.js'                   
+                  ]
+                })
+              }
+            }
+        })
   }])
     .config(['flowFactoryProvider', function (flowFactoryProvider) {
       flowFactoryProvider.defaults = {

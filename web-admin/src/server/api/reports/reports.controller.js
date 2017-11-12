@@ -3,49 +3,69 @@ const request = require('request');
 
 
 exports.getactive = function(req, result) {
-  var from = req.query.from;
-  var to = req.query.to;
+  
+  var url = 'https://linkuptdp.herokuapp.com/stat/user/activity';
+  var query = {from:req.query.from, to:req.query.to};
 
-/*  request('https://linkuptdp.herokuapp.com/AbuseReport/open', { json: true }, (err, res, body) => {
+  request({url:url, qs:query, json:true}, (err, res, body) => {
     if (err) { 
       return handleError(result, err);
     }
     else {
       return result.status(200).json(body);
     }
-  }); */
+  }); 
 
-  var data = { 'data' : [
-              [0, 0, 0, 0, 0, 0, 0],
-              [28, 48, 40, 19, 86, 27, 90]
-            ]};
-        
-
-  return result.status(200).json(data);
-  
 };
 
 exports.getbanned = function(req, result) {
+  
+  var url = 'https://linkuptdp.herokuapp.com/stat/user/ActiveStatus'
 
-  var from = req.query.from;
-  var to = req.query.to;
-  var abuse = req.query.abuse;
+  request({url:url, json:true}, (err, res, body) => {
+    if (err) { 
+      return handleError(result, err);
+    }
+    else {
+      return result.status(200).json(body);
+    }
+  }); 
 
-  var data = { 'data' :[600, 400]};
+};
 
-  return result.status(200).json(data);
+exports.getbandetail = function(req, result){
+  var url = 'https://linkuptdp.herokuapp.com/stat/user/ActiveStatus/PremiumStatus';
+  var query = {isActive:req.query.isActive};
+
+  request({url:url, qs:query, json:true}, (err, res, body) => {
+    if (err) { 
+      return handleError(result, err);
+    }
+    else {
+      return result.status(200).json(body);
+    }
+  }); 
 };
 
 exports.getabuses = function(req, result) {
-  var from = req.query.from;
-  var to = req.query.to;
+
+  var url = 'https://linkuptdp.herokuapp.com/stat/AbuseReport'
+  var query = {from:req.query.from, to:req.query.to};
+
+  request({url:url, qs:query, json:true}, (err, res, body) => {
+    if (err) { 
+      return handleError(result, err);
+    }
+    else {
+      return result.status(200).json(body);
+    }
+  }); 
   
-  var data = { 'data' :[300, 500, 100, 100]};
-  return result.status(200).json(data);
 };
 
 
 // Error function
 function handleError(res, err) {
+  console.log(err);
   return res.status(500).json(err);
 }
