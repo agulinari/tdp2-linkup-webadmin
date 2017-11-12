@@ -5,9 +5,25 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
-    
-    <!-- /.panel -->
     <div class="row">
+        <form  class="form-inline" name="myForm" ng-submit="vm.getReport(vm.fromDate,vm.toDate)" novalidate>
+        
+             <div class="form-group" ng-class="{ 'has-error' : myForm.inputFrom.$invalid && !myForm.inputFrom.$pristine }">
+                <label for="inputFrom">Desde</label>
+                <input type="date" name="inputFrom" class="form-control" ng-model="vm.fromDate" min="2000-01-01" max="2099-12-31" required>
+                <p ng-show="myForm.inputFrom.$invalid && !myForm.inputFrom.$pristine" class="help-block">Ingrese una fecha v&aacute;lida</p>
+            </div>   
+            <div class="form-group" ng-class="{ 'has-error' : myForm.inputTo.$invalid && !myForm.inputTo.$pristine }">
+                <label for="inputTo">Hasta</label>
+                <input type="date" name="inputTo" class="form-control" ng-model="vm.toDate" min="2000-01-01" max="2099-12-31" required>
+                <p ng-show="myForm.inputTo.$invalid && !myForm.inputTo.$pristine" class="help-block">Ingrese una fecha v&aacute;lida</p>
+            </div>   
+        <button type="submit" class="btn btn-primary" ng-disabled="myForm.$invalid">Consultar</button>
+        </form>
+    </div>
+    <hr/>
+    <!-- /.panel -->
+    <div class="row" ng-show="vm.showChart">
      
         <!-- /.col-lg-8 -->
         <div class="col-lg-8">
@@ -17,7 +33,7 @@
                 </div>
                 <div class="panel-body">
                     <canvas id="line" class="chart chart-line chart-xl" data="vm.line.data" labels="vm.line.labels" legend="true"
-                    click="vm.line.onClick" series="vm.line.series"></canvas>
+                    click="vm.line.onClick" series="vm.line.series"></canvas>                    
                 </div>
         
    

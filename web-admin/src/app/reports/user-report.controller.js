@@ -4,29 +4,38 @@
         .module('sbAdminApp')
         .controller('ActiveUsersReportController', ActiveUsersReportController);
 
-    ActiveUsersReportController.$inject = ['ReportsService','$state', '$scope'];
-    function ActiveUsersReportController(ReportsService, $state, $scope) {
+    ActiveUsersReportController.$inject = ['ReportsService','$state', '$scope', '$filter'];
+    function ActiveUsersReportController(ReportsService, $state, $scope, $filter) {
         var vm = this;
         vm.error = false;
         vm.fromDate = null;
         vm.toDate = null;
-        vm.dataLoading = true;
+        vm.dataLoading = false;
+        vm.showChart = false;
         vm.grid = [];
         vm.itemsByPage=10;
 
          vm.line = {
-            labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
+            labels: [],
             series: ['Normales', 'Premium'],
             data: [
-              [0, 0, 0, 0, 0, 0, 0],
-              [0, 0, 0, 0, 0, 0, 0]
+              [],
+              []
             ],
             onClick: function (points, evt) {
               console.log(points, evt);
             }
         };
 
+        
+
         vm.getReport = function(fromDate, toDate){
+            
+            fromDate = $filter('date')(fromDate, 'dd/MM/yyyy'); 
+            toDate = $filter('date')(toDate, 'dd/MM/yyyy');
+
+            vm.dataLoading = true;
+
             ReportsService.GetActiveUsers(fromDate, toDate).then(function (data) {
                     if (data.success) {
                         
@@ -45,6 +54,7 @@
                         vm.line.data = users;
 
                         vm.dataLoading = false;
+                        vm.showChart = true;
                     } else {
                         vm.error = true;
                         //Mostrar mensaje
@@ -52,8 +62,6 @@
                     }
             });
         };
-
-        vm.getReport('01/01/2017','07/11/2017');
 
 
     }

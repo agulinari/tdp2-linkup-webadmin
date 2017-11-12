@@ -5,10 +5,13 @@
         .controller('AbuseReportController', AbuseReportController);
 
 
-    AbuseReportController.$inject = ['ReportsService','$state', '$scope'];
-    function AbuseReportController(ReportsService, $state, $scope) {
+    AbuseReportController.$inject = ['ReportsService','$state', '$scope', '$filter'];
+    function AbuseReportController(ReportsService, $state, $scope, $filter) {
         var vm = this;
         vm.dataLoading = false;
+        vm.showChart = false;
+        vm.fromDate = null;
+        vm.toDate = null;
         vm.error = false;
         vm.grid = [];
         vm.itemsByPage=10;
@@ -24,6 +27,10 @@
         };
 
         vm.getReport = function(fromDate, toDate){
+            
+            fromDate = $filter('date')(fromDate, 'dd/MM/yyyy'); 
+            toDate = $filter('date')(toDate, 'dd/MM/yyyy');
+
             vm.dataLoading = true;
             ReportsService.GetAbuses(fromDate, toDate).then(function (data) {
                     if (data.success) {
@@ -35,6 +42,7 @@
                         vm.grid = data.stats;
                         vm.pie.data = chartData;
                         vm.dataLoading = false;
+                        vm.showChart = true;
 
                     } else {
                         vm.error = true;
@@ -44,6 +52,6 @@
             });
         }
 
-       vm.getReport('05/11/2017','11/11/2017');
+
     }
 
