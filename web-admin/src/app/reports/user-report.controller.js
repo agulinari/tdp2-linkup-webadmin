@@ -43,7 +43,8 @@
                         var labels = [];    
                         var basicUsers = [];
                         var premiumUsers = [];
-                        for (var i = 0, len = data.stats.length; i < len; i++) {
+                        var step = Math.ceil(data.stats.length/50);
+                        for (var i = 0, len = data.stats.length; i < len; i+=step) {
                           labels.push(data.stats[i].date);
                           basicUsers.push(data.stats[i].basic);
                           premiumUsers.push(data.stats[i].premium);
@@ -52,7 +53,7 @@
                         vm.grid = data.stats;
                         vm.line.labels = labels;
                         vm.line.data = users;
-
+                        vm.line.showXLabels= 10;
                         vm.dataLoading = false;
                         vm.showChart = true;
                     } else {

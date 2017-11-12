@@ -6,6 +6,7 @@ exports.getactive = function(req, result) {
   
   var url = 'https://linkuptdp.herokuapp.com/stat/user/activity';
   var query = {from:req.query.from, to:req.query.to};
+     
 
   request({url:url, qs:query, json:true}, (err, res, body) => {
     if (err) { 
