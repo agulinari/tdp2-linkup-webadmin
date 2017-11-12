@@ -11,6 +11,8 @@
         vm.fromDate = null;
         vm.toDate = null;
         vm.dataLoading = true;
+        vm.grid = [];
+        vm.itemsByPage=10;
 
          vm.line = {
             labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'],
@@ -38,7 +40,7 @@
                           premiumUsers.push(data.stats[i].premium);
                         }
                         var users = [basicUsers, premiumUsers];
-
+                        vm.grid = data.stats;
                         vm.line.labels = labels;
                         vm.line.data = users;
 

@@ -248,52 +248,6 @@ angular
               }
             }
         })
-        .state('dashboard.abusereport.pie', {
-            url: '/reports/abuses/pie',
-            templateUrl: 'reports/pie.view.html',
-            controller: 'PieController',
-            resolve: {
-              loadMyFiles:function($ocLazyLoad) {
-               return $ocLazyLoad.load({
-                  name:'chart.js',
-                  files:[
-                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                    'bower_components/angular-chart.js/dist/angular-chart.css'
-                  ]
-                }),
-                $ocLazyLoad.load({
-                  name:'sbAdminApp',
-                  files:[
-                    'reports/pie.controller.js',
-                    'app-services/reports.service.js'                   
-                  ]
-                })
-              }
-            }
-        })
-        .state('dashboard.abusereport.piedetail', {
-            url: '/reports/abuses/piedetail',
-            templateUrl: 'reports/pie-detail.view.html',
-            controller: 'PieDetailController',
-            resolve: {
-              loadMyFiles:function($ocLazyLoad) {
-               return $ocLazyLoad.load({
-                  name:'chart.js',
-                  files:[
-                    'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                    'bower_components/angular-chart.js/dist/angular-chart.css'
-                  ]
-                }),
-                $ocLazyLoad.load({
-                  name:'sbAdminApp',
-                  files:[
-                    'reports/pie-detail.controller.js',
-                    'app-services/reports.service.js'                   
-                  ]
-                })
-              }
-            }
-        })
          .state('dashboard.banreport', {
             url: '/reports/abuses',
             templateUrl: 'reports/ban-report.view.html',
@@ -344,6 +298,9 @@ angular
             url: '/reports/abuses/banpiedetail',
             templateUrl: 'reports/banpie-detail.view.html',
             controller: 'BanPieDetailController',
+            params: {
+                isActive: true
+            },
             resolve: {
               loadMyFiles:function($ocLazyLoad) {
                return $ocLazyLoad.load({

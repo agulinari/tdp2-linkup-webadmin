@@ -8,7 +8,57 @@
     
     <!-- /.panel -->
     <div class="row">
-       <div ui-view></div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                   <i class="fa fa-pie-chart fa-fw"></i>  Gr&aacute;fico
+                </div>
+                <div class="panel-body">
+                    <canvas id="pie" class="chart chart-pie chart-xs" data="vm.pie.data" labels="vm.pie.labels" legend="true" click="vm.pie.onClick"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /.row -->
+        <!-- /.row -->
+    <div class="row">
+     
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-table fa-fw"></i> Grilla
+                </div>
+                <div class="panel-body">
+                    <table st-safe-src="vm.grid" st-table="grid" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Lenguaje Abusivo</th>
+                            <th>Fotos Inapropiadas</th>
+                            <th>Spam</th>
+                            <th>Otros</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in grid">
+                            <td>{{row.abusiveLang}}</td>
+                            <td>{{row.illegalImage}}</td>
+                            <td>{{row.spam}}</td>
+                            <td>{{row.other}}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div st-pagination="" st-items-by-page="vm.itemsByPage" st-displayed-pages="7"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

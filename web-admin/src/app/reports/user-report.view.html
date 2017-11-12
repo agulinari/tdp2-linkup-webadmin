@@ -26,4 +26,41 @@
 
     </div>
     <!-- /.row -->
+    <div class="row">
+     
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-table fa-fw"></i> Grilla
+                </div>
+                <div class="panel-body">
+                    <table st-safe-src="vm.grid" st-table="grid" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Usuarios Premium</th>
+                            <th>Usuarios B&aacute;sicos</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in grid">
+                            <td>{{row.date | date:'dd/MM/yyyy'}}</td>
+                            <td>{{row.premium}}</td>
+                            <td>{{row.basic}}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div st-pagination="" st-items-by-page="vm.itemsByPage" st-displayed-pages="7"></div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>

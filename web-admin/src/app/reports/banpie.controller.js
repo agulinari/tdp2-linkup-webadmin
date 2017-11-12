@@ -9,15 +9,21 @@
         var vm = this;
         vm.dataLoading = false;
         vm.error = false;
+        vm.grid = [];
+        vm.itemsByPage=10;
         
         vm.pie = {
             labels : ["Activos", "Bloqueados"],
-            data : [500, 500],
+            data : [0, 0],
             onClick: function (points, evt) {
                 if (points.length > 0){
                     console.log(points[0].label);
-                    $state.go('dashboard.banreport.piedetail');
-
+                    if (points[0].label == vm.pie.labels[0]){
+                        $state.go('dashboard.banreport.piedetail',{isActive:true});
+                    }
+                    if (points[0].label == vm.pie.labels[1]){
+                        $state.go('dashboard.banreport.piedetail',{isActive:false});   
+                    }   
                 }
                 
             }
@@ -30,6 +36,7 @@
                         var chartData = [];
                         chartData.push(data.stats.active);
                         chartData.push(data.stats.blocked);
+                        vm.grid = data.stats;
                         vm.pie.data = chartData;
                         vm.dataLoading = false;
 
