@@ -18,7 +18,7 @@
         
         vm.pie = {
             labels : ["Lenguaje Abusivo", "Fotos Inapropiadas", "Spam", "Otros"],
-            data : [0, 0, 0, 0],
+            data : [1, 1, 1, 1],
             onClick: function (points, evt) {
                 if (points.length > 0){
                     console.log(points[0].label);
